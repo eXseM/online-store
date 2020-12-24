@@ -1,6 +1,5 @@
 <template>
     <div class="main">
-        <h1>Main</h1>
         <Catalog />
     </div>
 </template>
@@ -15,17 +14,16 @@ import Catalog from '@/components/Catalog'
         },
         data(){
             return{
-
+                
             }
         }
     }
 </script>
 
 <style lang="scss" scoped>
+
 .main{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
+    max-width: 900px;
+    margin: 0 auto;
 }
 </style>

@@ -4,7 +4,7 @@
         <div class="catalog__list">
             <catalog-item 
             
-            v-for="product in products"
+            v-for="product in PRODUCTS"
             :key="product.article"
             v-bind:product_data="product"
             @addToCart="showChildArticleInConsole"
@@ -15,6 +15,7 @@
 
 <script>
 import CatalogItem from '@/components/CatalogItem'
+import {mapActions, mapGetters} from 'vuex'
 
     export default {
         name: 'Catalog',
@@ -23,57 +24,30 @@ import CatalogItem from '@/components/CatalogItem'
         },
         data(){
             return{
-                products:[
-                    {
-                        image:"1.png",
-                        name: "T-shirt 1",
-                        price: 100,
-                        article: "T1",
-                        available: true
-                    },
-                    {
-                        image:"2.png",
-                        name: "T-shirt 2",
-                        price: 150,
-                        article: "T2",
-                        available: true
-                    },
-                    {
-                        image:"3.png",
-                        name: "T-shirt 3",
-                        price: 200,
-                        article: "T3",
-                        available: false
-                    },
-                    {
-                        image:"4.png",
-                        name: "T-shirt 4",
-                        price: 300,
-                        article: "T4",
-                        available: true
-                    },
-                    {
-                        image:"5.png",
-                        name: "T-shirt 5",
-                        price: 500,
-                        article: "T5",
-                        available: false
-                    },
-                    {
-                        image:"6.png",
-                        name: "T-shirt 6",
-                        price: 700,
-                        article: "T6",
-                        available: true
-                    }
-                ]
+
             }
         },
+        computed:{
+          ...mapGetters([
+              'PRODUCTS'
+          ]),
+        },
         methods:{
+            ...mapActions([
+                'GET_PRODUCTS_FROM_API'
+            ]),
             showChildArticleInConsole(data){
                 console.log(data);
             }
-        }
+        },
+       mounted() {
+          this.GET_PRODUCTS_FROM_API()
+            .then((response) =>{
+              if(response.data){
+                console.log('Data arrived!')
+              }
+            })
+      }
     }
 </script>
 

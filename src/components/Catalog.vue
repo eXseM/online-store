@@ -1,13 +1,15 @@
 <template>
     <div class="catalog">
-        <h1>Catalog</h1>
+        <router-link class="catalog__links" :to="{name: 'Cart', params:{cart_data: CART}}" >
+          <div class="catalog__link">Cart: {{CART.length}} </div>
+        </router-link>
+        <h1>CATALOG</h1>
         <div class="catalog__list">
-            <catalog-item 
-            
+            <catalog-item
             v-for="product in PRODUCTS"
             :key="product.article"
             v-bind:product_data="product"
-            @addToCart="showChildArticleInConsole"
+            @addToCart="addToCart"
             />
         </div>
     </div>
@@ -29,15 +31,17 @@ import {mapActions, mapGetters} from 'vuex'
         },
         computed:{
           ...mapGetters([
-              'PRODUCTS'
+              'PRODUCTS',
+              'CART'
           ]),
         },
         methods:{
             ...mapActions([
-                'GET_PRODUCTS_FROM_API'
+                'GET_PRODUCTS_FROM_API',
+                'ADD_TO_CART'
             ]),
-            showChildArticleInConsole(data){
-                console.log(data);
+          addToCart(data){
+                this.ADD_TO_CART(data)
             }
         },
        mounted() {
@@ -54,6 +58,29 @@ import {mapActions, mapGetters} from 'vuex'
 <style lang="scss" scoped>
 
     .catalog{
+        &__link{
+          position: absolute;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          top: 10px;
+          right: 10px;
+          width: 100px;
+          height: 50px;
+          font-size: 24px;
+          font-family: 'Poppins', sans-serif;
+          border: solid 1px #fff;
+          border-radius: 8px;
+
+          &:hover{
+            background: #323232;
+            box-shadow: 0 0 8px 0 #e0e0e0;
+          }
+        }
+        &__links{
+          color: #fff;
+          text-decoration: none;
+        }
         &__list{
             display: flex;
             flex-wrap: wrap;

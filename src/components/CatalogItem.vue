@@ -28,9 +28,12 @@
                 }
             }
         },
-        methods:{
+      mounted() {
+        this.$set(this.product_data, 'quantity', 1)
+      },
+      methods:{
             addToCart(){
-                this.$emit('addToCart', this.product_data.article)
+                this.$emit('addToCart' ,this.product_data)
             }
         }
     }

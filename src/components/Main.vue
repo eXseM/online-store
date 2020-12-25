@@ -1,22 +1,20 @@
 <template>
     <div class="main">
-        <Catalog />
+        <keep-alive>
+          <router-view />
+        </keep-alive>
     </div>
 </template>
 
 <script>
-import Catalog from '@/components/Catalog'
 
     export default {
         name: 'Main',
-        components:{
-            Catalog
-        },
+        components:{},
         data(){
-            return{
-                
-            }
-        }
+          return{}
+        },
+        computed:{}
     }
 </script>
 

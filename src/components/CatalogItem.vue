@@ -86,8 +86,9 @@
         appearance: none;
         outline: none;
         border-radius: 8px;
+        transition: .2s ease-in-out;
         &:hover{
-            box-shadow: 0 0 10px 3px #146744;
+          box-shadow: 0 0 5px 5px #2DCE89;
         }
       }
     }

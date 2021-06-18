@@ -1,8 +1,5 @@
 <template>
     <div class="cart">
-      <div class="cart__links">
-        <router-link class="cart__router" to="/">Main</router-link>
-      </div>
       <h1>CART</h1>
       <p v-if="!cart_data.length">There are no products in cart...</p>
       <CartItem
@@ -13,10 +10,6 @@
         @increment="increment(index)"
         @decrement="decrement(index)"
       />
-      <div class="cart__total">
-        <p class="total__name">Total: </p>
-        <p>{{ cartTotalCost }} $</p>
-      </div>
     </div>
 </template>
 
@@ -63,45 +56,5 @@ import {mapActions} from "vuex"
 <style lang="scss" scoped>
 .cart{
   margin-bottom: 130px;
-  &__links{
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 100px;
-    height: 50px;
-    border: 1px solid #fff;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-direction: column;
-    font-size: 24px;
-    font-family: 'Poppins', sans-serif;
-    border-radius: 8px;
-
-    &:hover{
-      background: #323232;
-      box-shadow: 0 0 8px 0 #e0e0e0;
-    }
-  }
-  &__router{
-
-    color: #fff;
-    text-decoration: none;
-  }
-  &__total{
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    padding: 24px;
-    display: flex;
-    justify-content: center;
-    background: #2DCE89;
-    color: #fff;
-    font-size: 24px;
-  }
-  .total__name{
-    margin-right: 16px;
-  }
 }
 </style>

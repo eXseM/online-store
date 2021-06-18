@@ -1,18 +1,19 @@
 <template>
   <div id="app">
+    <Header />
     <Main />
   </div>
 </template>
 
 <script>
 import Main from '@/components/Main'
-
+import Header from '@/components/Header'
 
 export default {
   name: 'App',
   components: {
-    Main
-    
+    Main,
+    Header
   }
 }
 </script>
@@ -20,8 +21,10 @@ export default {
 <style>
 
 body{
-  background: #131313;
+  background: #fff;
   font-family: 'Poppins', sans-serif;
+  padding: 0;
+  margin: 0;
 }
 
 #app {
@@ -30,6 +33,7 @@ body{
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #fff;
-  margin-top: 60px;
+  padding: 0;
+  margin: 0;
 }
 </style>

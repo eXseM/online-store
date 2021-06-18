@@ -21,11 +21,7 @@
         props:{
             product_data: {
                 type: Object,
-                default(){
-                    return{
-
-                    }
-                }
+                default: () => {}
             }
         },
       mounted() {
@@ -42,7 +38,6 @@
 <style lang="scss" scoped>
 
     .catalog-item{
-        background: #232323;
         border-radius: 20px;
         overflow: hidden;
         z-index: 1;
@@ -63,22 +58,17 @@
                 }
             }
         }
-        &::after{
-            content: 'eX';
-            position: absolute;
-            top: 40%;
-            left: 10%;
-            font-size: 12em;
-            font-weight: 800;
-            font-style: italic;
-            color: rgba(45, 206, 137,0.04);
-            z-index: -1;
+        &__name {
+            color: #333;
+        }
+        &__price {
+            color: #333;
         }
 
       &__addToCart{
         width: 150px;
         height: 40px;
-        color: #fff;
+        color: #333;
         font-size: 18px;
         font-family: 'Poppins', sans-serif;
         background: linear-gradient(35deg, #323232 10%, #2DCE89 , #323232);

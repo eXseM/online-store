@@ -1,9 +1,5 @@
 <template>
     <div class="catalog">
-        <router-link class="catalog__links" :to="{name: 'Cart', params:{cart_data: CART}}" >
-          <div class="catalog__link">Cart: {{CART.length}} </div>
-        </router-link>
-        <h1>CATALOG</h1>
         <div class="catalog__list">
             <catalog-item
             v-for="product in PRODUCTS"
@@ -58,6 +54,7 @@ import {mapActions, mapGetters} from 'vuex'
 <style lang="scss" scoped>
 
     .catalog{
+      margin-top: 50px;
         &__link{
           position: absolute;
           display: flex;

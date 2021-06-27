@@ -1,0 +1,91 @@
+<template>
+  <div class="catalog-item">
+    <div class="catalog-item__img">
+      <img :src="require('@/assets/' + product_data.image)" alt="" />
+    </div>
+    <div class="catalog-item__box">
+      <p class="catalog-item__name">{{ product_data.name }}</p>
+      <p class="catalog-item__weight">{{ product_data.weight }} гр.</p>
+      <p class="catalog-item__price">{{ product_data.price }} Р</p>
+      <button class="catalog-item__addToCart btn" @click="addToCart">
+        Выбрать
+      </button>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    product_data: {
+      type: Object,
+      default: () => {},
+    },
+  },
+  mounted() {
+    this.$set(this.product_data, "quantity", 1);
+  },
+  methods: {
+    addToCart() {
+      this.$emit("addToCart", this.product_data);
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.catalog-item {
+  font-family: Montserrat, serif;
+  border-radius: 20px;
+  width: 300px;
+  height: 450px;
+  overflow: hidden;
+//   border: 1px solid black;
+  z-index: 1;
+  padding: 10px;
+  position: relative;
+  margin-bottom: 10px;
+
+  &__img {
+    width: 100%;
+    height: 250px;
+    & img {
+      width: 250px;
+      height: 250px;
+      transition: 1s ease-in-out;
+
+      &:hover {
+        scale: 1.2;
+      }
+    }
+  }
+  &__box {
+    text-align: left;
+  }
+  &__name {
+    color: #333;
+  }
+  &__weight {
+    color: #333;
+  }
+  &__price {
+    color: #333;
+  }
+
+  &__addToCart {
+    font-family: Montserrat, serif;
+    margin-left: 170px;
+    width: 80px;
+    height: 35px;
+    color: #333;
+    font-size: 14px;
+
+    &:hover {
+        background: #FF6C6C;
+        color: #fff;
+        border: none;
+        border-radius: 2px;
+    }
+  }
+}
+</style>

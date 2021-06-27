@@ -1,20 +1,22 @@
 <template>
     <div class="cart">
-      <h1>CART</h1>
-      <p v-if="!cart_data.length">There are no products in cart...</p>
-      <CartItem
-        v-for="(item, index) in cart_data"
-        :key="item.article"
-        :cart_item_data="item"
-        @deleteFromCart="deleteFromCart(index)"
-        @increment="increment(index)"
-        @decrement="decrement(index)"
-      />
+      <h2 class="title">Корзина</h2>
+      <p v-if="!cart_data.length" class="cart__empty">There are no products in cart...</p>
+      <div class="cart-item">
+        <CartItem
+          v-for="(item, index) in cart_data"
+          :key="item.article"
+          :cart_item_data="item"
+          @deleteFromCart="deleteFromCart(index)"
+          @increment="increment(index)"
+          @decrement="decrement(index)"
+        />
+      </div>
     </div>
 </template>
 
 <script>
-import CartItem from "@/components/CartItem";
+import CartItem from "@/components/cart/CartItem";
 import {mapActions} from "vuex"
 
     export default {
@@ -55,6 +57,26 @@ import {mapActions} from "vuex"
 
 <style lang="scss" scoped>
 .cart{
-  margin-bottom: 130px;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+  .title {
+    width: 75%;
+    text-align: left;
+    color: #000;
+    font-weight: 500;
+    font-size: 30px;
+  }
+  .cart-item {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  &__empty{
+    color: #000;
+  }
 }
 </style>

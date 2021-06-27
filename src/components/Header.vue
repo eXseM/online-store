@@ -6,8 +6,8 @@
     <div class="header__right">
       <div class="header__right__links">
       <router-link class="links" to="/"> Каталог </router-link>
-      <router-link class="links" to="/"> Контакты </router-link>
-      <router-link class="links" to="/"> О нас </router-link>
+      <router-link class="links" to="/contacts"> Контакты </router-link>
+      <router-link class="links" to="/about-us"> О нас </router-link>
       <button class='reg-auth'> Вход / Регистрация </button>
       <router-link class="links" :to="{name: 'Cart', params:{cart_data: CART}}"> Корзина {{CART.length}} </router-link>
       </div>
@@ -30,7 +30,7 @@ import {mapGetters} from 'vuex'
     background: #FF6C6C;
     display: flex;
     flex-direction: row;
-    height: 70px;
+    height: 60px;
     width: 100%;
     font-family: Montserrat;
     &__left {
@@ -44,7 +44,6 @@ import {mapGetters} from 'vuex'
       align-content: center;
       align-items: center;
       &__links {
-        width: 100%;
         margin-left: 10%;
         .links{
           font-size: 18px;
@@ -57,7 +56,7 @@ import {mapGetters} from 'vuex'
           border: none;
           color: #fff;
           font-size: 18px;
-          font-weight: 400px;
+          font-weight: 400;
         }
       }
     }

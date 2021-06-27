@@ -2,43 +2,49 @@
     "products":[
       {
         "image":"1.png",
-        "name": "T-shirt 1",
-        "price": 100,
+        "name": "Индейка домашняя",
+        "price": 350,
+        "weight": 1000,
         "article": "T1",
         "available": true
       },
       {
-        "image":"2.png",
-        "name": "T-shirt 2",
-        "price": 150,
+        "image":"1.png",
+        "name": "Индейка домашняя",
+        "price": 350,
+        "weight": 1000,
         "article": "T2",
         "available": true
       },
       {
-        "image":"3.png",
-        "name": "T-shirt 3",
-        "price": 200,
+        "image":"1.png",
+        "name": "Индейка домашняя",
+        "price": 350,
+        "weight": 1000,
         "article": "T3",
-        "available": false
+        "available": true
       },
       {
-        "image":"4.png",
-        "name": "T-shirt 4",
-        "price": 300,
+        "image":"1.png",
+        "name": "Индейка домашняя",
+        "price": 350,
+        "weight": 1000,
         "article": "T4",
         "available": true
       },
       {
-        "image":"5.png",
-        "name": "T-shirt 5",
-        "price": 500,
+        "image":"1.png",
+        "name": "Индейка домашняя",
+        "price": 350,
+        "weight": 1000,
         "article": "T5",
-        "available": false
+        "available": true
       },
       {
-        "image":"6.png",
-        "name": "T-shirt 6",
-        "price": 700,
+        "image":"1.png",
+        "name": "Индейка домашняя",
+        "price": 350,
+        "weight": 1000,
         "article": "T6",
         "available": true
       }

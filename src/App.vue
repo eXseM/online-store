@@ -2,18 +2,21 @@
   <div id="app">
     <Header />
     <Main />
+    <Footer />
   </div>
 </template>
 
 <script>
-import Main from '@/components/Main'
+import Main from '@/pages/Main'
 import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 
 export default {
   name: 'App',
   components: {
     Main,
-    Header
+    Header,
+    Footer
   }
 }
 </script>
@@ -22,11 +25,13 @@ export default {
 
 body{
   background: #fff;
-  font-family: 'Poppins', sans-serif;
+  font-family: Montserrat, sans-serif;
   padding: 0;
   margin: 0;
 }
-
+textarea:focus, input:focus{
+    outline: none;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

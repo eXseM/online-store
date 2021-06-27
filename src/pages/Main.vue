@@ -14,9 +14,7 @@
 </script>
 
 <style lang="scss" scoped>
-
 .main{
-    max-width: 900px;
     margin: 0 auto;
 }
 </style>

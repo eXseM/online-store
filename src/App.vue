@@ -28,6 +28,7 @@ body{
   font-family: Montserrat, sans-serif;
   padding: 0;
   margin: 0;
+  min-height: 100vh;
 }
 textarea:focus, input:focus{
     outline: none;

@@ -12,7 +12,6 @@
           @decrement="decrement(index)"
         />
       </div>
-      <p>{{cartTotalCost}} ₽</p>
     </div>
 </template>
 
@@ -60,10 +59,10 @@ import {mapActions} from "vuex"
 .cart{
   color: #000;
   display: flex;
+  min-height: 100vh;
   flex-direction: column;
   align-items: center;
   margin-bottom: 30px;
-  min-height: 100vh;
   .title {
     width: 75%;
     text-align: left;

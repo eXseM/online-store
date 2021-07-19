@@ -23,6 +23,8 @@ export default {
 
 <style lang="scss" scoped>
 .footer {
+  position: static;
+  bottom: 0;
   background: #ff6c6c;
   width: 100%;
   height: 60px;

@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
-import auth from "./modules/auth"
+import auth from "./modules/auth";
 
 Vue.use(Vuex);
 
@@ -15,20 +15,14 @@ let store = new Vuex.Store({
       state.products = products;
     },
     SET_CART: (state, product) => {
-      if (state.cart.length) {
-        let isProductExists = false;
-        state.cart.map(function(item) {
-          if (item.article === product.article) {
-            isProductExists = true;
-            item.quantity++;
-          }
-        });
-        if (!isProductExists) {
-          state.cart.push(product);
+      let isProductExists = false;
+      state.cart.map(function(item) {
+        if (item.article === product.article) {
+          isProductExists = true;
+          item.quantity++;
         }
-      } else {
-        state.cart.push(product);
-      }
+      });
+      isProductExists || state.cart.push({ ...product, quantity: 1 });
     },
     REMOVE_FROM_CART: (state, index) => {
       state.cart.splice(index, 1);
@@ -78,8 +72,8 @@ let store = new Vuex.Store({
     },
   },
   modules: {
-      auth
-  }
+    auth,
+  },
 });
 
 export default store;

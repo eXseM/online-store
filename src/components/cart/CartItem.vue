@@ -3,26 +3,29 @@
     <img
       :src="require('@/assets/' + cart_item_data.image)"
       alt=""
-      class="cart-item__img"
+      class="cart-items__img"
     />
     <div class="cart-items__info">
       <div class="cart-items__info__title">
         <p>{{ cart_item_data.name }}</p>
       </div>
       <div class="cart-items__info__actions">
-        <button @click="deleteFromCart" class="cart-item__delete-btn">
-          D
-        </button>
-        <div class="cart-items__quantity">
+        <img
+          @click="deleteFromCart"
+          src="@/assets/trash.png"
+          alt="delete"
+          class="delete-btn"
+        />
+        <div class="quantity-block">
           <div class="quantity">
-            <div @click="decrementItem" class="quantity__btn-min">&#10134;</div>
-            {{ cart_item_data.quantity }}
-            <div @click="incrementItem" class="quantity__btn-plus">
+            <div @click="decrementItem" class="quantity__btn-min btn">&#10134;</div>
+            <p class="quantity-counter">{{ cart_item_data.quantity }}</p>
+            <div @click="incrementItem" class="quantity__btn-plus btn">
               &#10133;
             </div>
           </div>
         </div>
-        <p>{{ cart_item_data.price }}</p>
+        <p>{{ cart_item_data.price }} ₽</p>
       </div>
     </div>
   </div>
@@ -56,7 +59,6 @@ export default {
 
 <style lang="scss" scoped>
 .cart-items {
-  border: 1px solid black;
   color: #000;
   width: 260px;
   margin-left: 20px;
@@ -64,16 +66,44 @@ export default {
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
-
+  &__img{
+    height: 300px;
+    margin-top: -30px;
+  }
   &__info {
     display: flex;
     flex-direction: column;
-    background: #696969;
     width: 100%;
+    margin-top: -20px;
 
     &__actions {
+      margin-top: 20px;
       display: flex;
       justify-content: space-around;
+      align-items: center;
+      align-content: center;
+
+      .delete-btn {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+      }
+      .quantity-block {
+        width: 40%;
+        .quantity {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+          align-items: center;
+
+          .quantity-counter {
+            color: #000;
+          }
+        }
+        .btn{
+          cursor: pointer;
+        }
+      }
     }
   }
 }

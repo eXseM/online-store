@@ -79,6 +79,9 @@ export default {
     height: 35px;
     color: #333;
     font-size: 14px;
+    background: #fff;
+    border: 1px solid #333;
+    border-radius: 2px;
 
     &:hover {
         background: #FF6C6C;

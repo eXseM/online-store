@@ -61,7 +61,8 @@ export default {
   .pol {
     display: flex;
     flex-wrap: wrap;
-    width: 75%;
+    justify-content: center;
+    width: 80%;
   }
 }
 </style>

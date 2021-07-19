@@ -38,7 +38,7 @@ let store = new Vuex.Store({
   },
   actions: {
     GET_PRODUCTS_FROM_API({ commit }) {
-      return axios("http://localhost:3000/products", {
+      return axios("https://my-json-server.typicode.com/exsem/online-store/products", {
         method: "GET",
       })
         .then((products) => {

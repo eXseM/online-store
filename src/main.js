@@ -3,6 +3,7 @@ import App from "./App.vue";
 import store from "./vuex/store";
 import router from "./router/router";
 import VueSplide from "@splidejs/vue-splide";
+import Vuelidate from "vuelidate";
 
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -10,7 +11,8 @@ import "firebase/database";
 
 Vue.config.productionTip = false;
 
-Vue.use(VueSplide);
+Vue.use(VueSplide)
+Vue.use(Vuelidate)
 
 firebase.initializeApp({
   apiKey: "AIzaSyDN66-WO-JzTsdZahDqFVqTtrDf_obcWpE",

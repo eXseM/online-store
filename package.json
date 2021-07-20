@@ -2,7 +2,6 @@
   "name": "online-store",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://exsem.github.io/online-store/",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -18,6 +17,7 @@
     "sass-loader": "^10.1.0",
     "vue": "^2.6.11",
     "vue-router": "^3.4.9",
+    "vuelidate": "^0.7.6",
     "vuex": "^3.6.0"
   },
   "devDependencies": {

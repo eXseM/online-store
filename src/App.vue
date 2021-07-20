@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <Header />
+    <Header @open-modal="open()"/>
+    <RegAuthModal ref="modal" />
     <Main />
     <Footer />
   </div>
@@ -10,13 +11,20 @@
 import Main from '@/pages/Main'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import RegAuthModal from '@/components/modules/RegAuthModal'
 
 export default {
   name: 'App',
   components: {
     Main,
     Header,
-    Footer
+    Footer,
+    RegAuthModal,
+  },
+  methods: {
+    open() {
+      this.$refs.modal.open();
+    }
   }
 }
 </script>
@@ -33,8 +41,16 @@ body{
 textarea:focus, input:focus{
     outline: none;
 }
+.dirty {
+  border-color: #5A5;
+  background: #EFE;
+}
+.error {
+  border: 1px solid red;
+  background: #FDD;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

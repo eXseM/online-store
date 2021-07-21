@@ -1,17 +1,17 @@
 <template>
   <div class="modal" v-if="modal" ref="modal-close">
     <div class="modal__container">
-      <RegAuthForm @submit="submit"/>
+      <RegAuthForm @register="register" @login="login" @close="close" />
     </div>
   </div>
 </template>
 
 <script>
-import RegAuthForm from "@/components/forms/RegAuthForm"
+import RegAuthForm from "@/components/forms/RegAuthForm";
 export default {
   name: "RegAuthModal",
   components: {
-    RegAuthForm
+    RegAuthForm,
   },
   data() {
     return {
@@ -25,9 +25,13 @@ export default {
     close() {
       this.modal = false;
     },
-    submit() {
-
-    }
+    async login(formLoginData) {
+      this.$store.dispatch("login", formLoginData);
+      await this.$store.dispatch("FETCH_INFO");
+    },
+    async register(formRegData) {
+      this.$store.dispatch("register", formRegData);
+    },
   },
   mounted() {
     let vm = this;
@@ -57,7 +61,7 @@ export default {
   &__container {
     width: 25%;
     border-radius: 16px;
-    min-height: 300px;
+    min-height: 400px;
     box-shadow: 0px 0px 5px 5px #f18f8f;
     background: #fff;
     display: flex;

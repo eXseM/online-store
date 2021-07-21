@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <Header @open-modal="open()"/>
+    <notifications group="foo" />
+    <Header @open-modal="open()" />
     <RegAuthModal ref="modal" />
     <Main />
     <Footer />
@@ -8,46 +9,49 @@
 </template>
 
 <script>
-import Main from '@/pages/Main'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
-import RegAuthModal from '@/components/modules/RegAuthModal'
+import Main from "@/pages/Main";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import RegAuthModal from "@/components/modules/RegAuthModal";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Main,
     Header,
     Footer,
     RegAuthModal,
   },
+  async created(){
+    await this.$store.dispatch("FETCH_INFO");
+  },
   methods: {
     open() {
       this.$refs.modal.open();
-    }
+    },
   }
-}
+};
 </script>
 
 <style>
-
-body{
+body {
   background: #fff;
   font-family: Montserrat, sans-serif;
   padding: 0;
   margin: 0;
   min-height: 100vh;
 }
-textarea:focus, input:focus{
-    outline: none;
+textarea:focus,
+input:focus {
+  outline: none;
 }
 .dirty {
-  border-color: #5A5;
-  background: #EFE;
+  border-color: #5a5;
+  background: #efe;
 }
 .error {
   border: 1px solid red;
-  background: #FDD;
+  background: #fdd;
 }
 #app {
   font-family: Montserrat, sans-serif;

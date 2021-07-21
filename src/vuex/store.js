@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
 import auth from "./modules/auth";
+import info from "./modules/info"
 
 Vue.use(Vuex);
 
@@ -9,8 +10,15 @@ let store = new Vuex.Store({
   state: {
     products: [],
     cart: [],
+    error: null
   },
   mutations: {
+    SET_ERROR(state, error) {
+      state.error = error;
+    },
+    CLEAR_ERROR(state) {
+      state.error = null;
+    },
     SET_PRODUCTS_TO_STATE: (state, products) => {
       state.products = products;
     },
@@ -70,9 +78,13 @@ let store = new Vuex.Store({
     CART(state) {
       return state.cart;
     },
+    ERROR(state) {
+      return state.error;
+    }
   },
   modules: {
     auth,
+    info
   },
 });
 

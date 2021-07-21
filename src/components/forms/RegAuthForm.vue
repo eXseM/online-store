@@ -23,11 +23,18 @@
         Введите корректный email
       </small>
       <input
-        type="number"
+        type="text"
+        class="modal__container-body__form-fields"
+        placeholder="Ваше имя"
+        v-model.trim="name"
+        v-if="registration"
+      />
+      <masked-input
         class="modal__container-body__form-fields"
         placeholder="Ваш телефон"
-        v-if="registration"
         v-model="phone"
+        v-if="registration"
+        mask="\+\7(111)111-11-11"
       />
       <input
         type="password"
@@ -37,14 +44,21 @@
         :class="{
           error:
             ($v.password.$dirty && !$v.password.required) ||
-            ($v.password.$dirty && !$v.password.minLength)
+            ($v.password.$dirty && !$v.password.minLength),
         }"
       />
-      <small class="error-msg" v-if="$v.password.$dirty && !$v.password.required">
+      <small
+        class="error-msg"
+        v-if="$v.password.$dirty && !$v.password.required"
+      >
         Введите пароль!
       </small>
-      <small class="error-msg" v-else-if="$v.password.$dirty && !$v.password.minLength">
-        Пароль должен быть больше {{$v.password.$params.minLength.min}} символов!
+      <small
+        class="error-msg"
+        v-else-if="$v.password.$dirty && !$v.password.minLength"
+      >
+        Пароль должен быть больше
+        {{ $v.password.$params.minLength.min }} символов!
       </small>
     </div>
     <div class="modal__container-footer">
@@ -80,6 +94,7 @@ export default {
   data() {
     return {
       email: "",
+      name: "",
       phone: "",
       password: "",
       registration: false,
@@ -90,17 +105,28 @@ export default {
     password: { required, minLength: minLength(6) },
   },
   methods: {
-    submit() {
+    async submit() {
       if (this.$v.$invalid) {
         this.$v.$touch();
         return;
       }
-      const formData = {
-        email: this.email,
-        password: this.password
+      if (this.registration) {
+        const formRegData = {
+          email: this.email,
+          password: this.password,
+          name: this.name,
+          phone: this.phone,
+        };
+        this.$emit("register", formRegData);
+        this.$emit("close");
+      } else {
+        const formLoginData = {
+          email: this.email,
+          password: this.password,
+        };
+        this.$emit("login", formLoginData);
+        this.$emit("close");
       }
-      console.log(formData);
-      this.$emit("submit");
     },
   },
 };

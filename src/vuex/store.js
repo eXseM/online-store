@@ -1,8 +1,11 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
+import firebase from "firebase/app";
+import "firebase/firestore";
+import createPersistedState from "vuex-persistedstate";
 import auth from "./modules/auth";
-import info from "./modules/info"
+import info from "./modules/info";
 
 Vue.use(Vuex);
 
@@ -10,14 +13,19 @@ let store = new Vuex.Store({
   state: {
     products: [],
     cart: [],
-    error: null
+    error: null,
+    test: {},
   },
+  plugins: [createPersistedState()],
   mutations: {
     SET_ERROR(state, error) {
       state.error = error;
     },
     CLEAR_ERROR(state) {
       state.error = null;
+    },
+    SET_TEST: (state, test) => {
+      state.test = test;
     },
     SET_PRODUCTS_TO_STATE: (state, products) => {
       state.products = products;
@@ -45,10 +53,30 @@ let store = new Vuex.Store({
     },
   },
   actions: {
+    GET_PRODUCTS_FROM_FB({ commit }) {
+      try {
+        const test = firebase
+          .firestore()
+          .collection("products")
+          .get()
+          .then((ctx) => {
+            ctx.forEach((doc) => {
+              doc.data()
+              commit("SET_TEST", doc.data())
+            });
+          });
+          console.log(test, 123);
+      } catch (e) {
+        return e;
+      }
+    },
     GET_PRODUCTS_FROM_API({ commit }) {
-      return axios("https://my-json-server.typicode.com/exsem/online-store/products", {
-        method: "GET",
-      })
+      return axios(
+        "https://my-json-server.typicode.com/exsem/online-store/products",
+        {
+          method: "GET",
+        }
+      )
         .then((products) => {
           commit("SET_PRODUCTS_TO_STATE", products.data);
           return products;
@@ -80,11 +108,14 @@ let store = new Vuex.Store({
     },
     ERROR(state) {
       return state.error;
-    }
+    },
+    TEST(state) {
+      return state.test;
+    },
   },
   modules: {
     auth,
-    info
+    info,
   },
 });
 

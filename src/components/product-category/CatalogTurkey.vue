@@ -19,9 +19,6 @@ export default {
   components: {
     CatalogItemTurkey,
   },
-  data() {
-    return {};
-  },
   computed: {
     ...mapGetters(["PRODUCTS", "CART"]),
   },

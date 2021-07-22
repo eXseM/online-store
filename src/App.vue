@@ -13,7 +13,8 @@ import Main from "@/pages/Main";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import RegAuthModal from "@/components/modules/RegAuthModal";
-
+import firebase from 'firebase/app'
+import 'firebase/firestore'
 export default {
   name: "App",
   components: {
@@ -24,6 +25,11 @@ export default {
   },
   async created(){
     await this.$store.dispatch("FETCH_INFO");
+    firebase.firestore().collection("products").get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        console.log(doc.data());
+      })
+    })
   },
   methods: {
     open() {

@@ -8,7 +8,7 @@
         <router-link class="links" to="/"> Каталог </router-link>
         <router-link class="links" to="/contacts"> Контакты </router-link>
         <router-link class="links" to="/about-us"> О нас </router-link>
-        <button class="reg-auth" @click="$emit('open-modal')">
+        <button class="reg-auth" @click="$emit('open-modal')" v-if="!name">
           Вход / Регистрация
         </button>
         <router-link
@@ -18,6 +18,7 @@
           Корзина {{ CART.length }}
         </router-link>
         <div class="user-menu" v-click-outside="close">
+          <div class="user-avatar" v-if="name"><img src="@/assets/user.png" alt="" class="user-avatar__img"></div>
           <button class="user-name" @click="openMenu = !openMenu">
             {{name}}
           </button>
@@ -53,7 +54,7 @@ export default {
   },
   computed: {
     name(){
-      return this.$store.getters.info?.name
+      return this.$store.getters.INFO?.name
     },
     ...mapGetters(["CART"]),
   },
@@ -91,6 +92,8 @@ export default {
       width: 100%;
       display: flex;
       justify-content: center;
+      align-items: center;
+      height: 100%;
       .links {
         font-size: 18px;
         font-weight: 400;
@@ -99,6 +102,21 @@ export default {
       }
       .user-menu {
         width: 130px;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        align-content: center;
+        .user-avatar {
+          width: 100px;
+          height: 50px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          &__img {
+            width: 40px;
+            height: 40px;
+          }
+        }
         .fade-enter,
         .fade-leave-to {
           opacity: 0;

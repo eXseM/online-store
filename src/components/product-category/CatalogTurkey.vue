@@ -3,10 +3,10 @@
     <h2 class="title">Индейки</h2>
     <div class="ind">
       <CatalogItemTurkey
-        v-for="product in PRODUCTS"
-        :key="product.article"
-        v-bind:product_data="product"
+        v-for="product in products"
+        :key="product.id"
         @addToCart="addToCart"
+        :product_data="product"
       />
     </div>
   </div>
@@ -19,21 +19,34 @@ export default {
   components: {
     CatalogItemTurkey,
   },
+  data() {
+    return {
+      products: []
+    }
+  },
   computed: {
-    ...mapGetters(["PRODUCTS", "CART"]),
+    ...mapGetters(["CART"]),
   },
   methods: {
-    ...mapActions(["GET_PRODUCTS_FROM_API", "ADD_TO_CART"]),
+    ...mapActions(["ADD_TO_CART", "GET_PRODUCTS_FROM_FB"]),
     addToCart(data) {
       this.ADD_TO_CART(data);
     },
   },
+  created () {
+    this.products = this.$store.state.test[1].Turkey
+  },
   mounted() {
-    this.GET_PRODUCTS_FROM_API().then((response) => {
-      if (response.data) {
-        console.log("Data arrived!");
+    this.GET_PRODUCTS_FROM_FB().then((response) => {
+      if (response) {
+        console.log('Data');
       }
-    });
+    })
+    // this.GET_PRODUCTS_FROM_API().then((response) => {
+    //   if (response.data) {
+    //     console.log("Data arrived!");
+    //   }
+    // });
   },
 };
 </script>

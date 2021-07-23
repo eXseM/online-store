@@ -5,7 +5,7 @@
     </div>
     <div class="catalog-item__box">
       <p class="catalog-item__name">{{ product_data.name }}</p>
-      <p class="catalog-item__weight">{{ product_data.weight }} гр.</p>
+      <!-- <p class="catalog-item__weight">{{ product_data.weight }} гр.</p> -->
       <p class="catalog-item__price">{{ product_data.price }} Р</p>
       <button class="catalog-item__addToCart btn" @click="addToCart">
         Выбрать
@@ -21,6 +21,9 @@ export default {
       type: Object,
       default: () => {},
     },
+  },
+  created(){
+    console.log(this.product_data);
   },
   mounted() {
     this.$set(this.product_data, "quantity", 1);
@@ -40,7 +43,6 @@ export default {
   width: 300px;
   height: 450px;
   overflow: hidden;
-//   border: 1px solid black;
   z-index: 1;
   padding: 10px;
   position: relative;
@@ -61,6 +63,7 @@ export default {
   }
   &__box {
     text-align: left;
+    padding-left: 20px;
   }
   &__name {
     color: #333;

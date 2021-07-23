@@ -1,9 +1,12 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import axios from "axios";
+// import axios from "axios";
 import firebase from "firebase/app";
 import "firebase/firestore";
+
 import createPersistedState from "vuex-persistedstate";
+import { vuexfireMutations, firestoreAction } from "vuexfire";
+
 import auth from "./modules/auth";
 import info from "./modules/info";
 
@@ -14,10 +17,11 @@ let store = new Vuex.Store({
     products: [],
     cart: [],
     error: null,
-    test: {},
+    test: [],
   },
   plugins: [createPersistedState()],
   mutations: {
+    ...vuexfireMutations,
     SET_ERROR(state, error) {
       state.error = error;
     },
@@ -53,39 +57,42 @@ let store = new Vuex.Store({
     },
   },
   actions: {
-    GET_PRODUCTS_FROM_FB({ commit }) {
-      try {
-        const test = firebase
-          .firestore()
-          .collection("products")
-          .get()
-          .then((ctx) => {
-            ctx.forEach((doc) => {
-              doc.data()
-              commit("SET_TEST", doc.data())
-            });
-          });
-          console.log(test, 123);
-      } catch (e) {
-        return e;
-      }
-    },
-    GET_PRODUCTS_FROM_API({ commit }) {
-      return axios(
-        "https://my-json-server.typicode.com/exsem/online-store/products",
-        {
-          method: "GET",
-        }
-      )
-        .then((products) => {
-          commit("SET_PRODUCTS_TO_STATE", products.data);
-          return products;
-        })
-        .catch((error) => {
-          console.log(error);
-          return error;
-        });
-    },
+    GET_PRODUCTS_FROM_FB: firestoreAction(({ bindFirestoreRef }) => {
+      return bindFirestoreRef('test', firebase.firestore().collection("products"))
+    }),
+    // GET_PRODUCTS_FROM_FB({ commit }) {
+    //   try {
+    //     const test = firebase
+    //       .firestore()
+    //       .collection("products")
+    //       .get()
+    //       .then((ctx) => {
+    //         ctx.forEach((doc) => {
+    //           doc.data()
+    //         });
+    //       });
+    //       commit("SET_TEST", test)
+    //       console.log(test, 123);
+    //   } catch (e) {
+    //     console.log(e);
+    //   }
+    // },
+    // GET_PRODUCTS_FROM_API({ commit }) {
+    //   return axios(
+    //     "https://my-json-server.typicode.com/exsem/online-store/products",
+    //     {
+    //       method: "GET",
+    //     }
+    //   )
+    //     .then((products) => {
+    //       commit("SET_PRODUCTS_TO_STATE", products.data);
+    //       return products;
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //       return error;
+    //     });
+    // },
     ADD_TO_CART({ commit }, product) {
       commit("SET_CART", product);
     },
@@ -108,9 +115,6 @@ let store = new Vuex.Store({
     },
     ERROR(state) {
       return state.error;
-    },
-    TEST(state) {
-      return state.test;
     },
   },
   modules: {

@@ -2,42 +2,33 @@
   <div class="catalog-semi">
     <h2 class="title">Полуфабрикат</h2>
     <div class="pol">
-      <CatalogItemTurkey
+      <!-- <CatalogItemTurkey
         v-for="product in PRODUCTS"
         :key="product.article"
         :product_data="product"
         @addToCart="addToCart"
-      />
+      /> -->
     </div>
   </div>
 </template>
 
 <script>
-import CatalogItemTurkey from "@/components/product-items/CatalogItemTurkey";
+// import CatalogItemTurkey from "@/components/product-items/CatalogItemTurkey";
 import { mapActions, mapGetters } from "vuex";
 export default {
   components: {
-    CatalogItemTurkey,
-  },
-  data() {
-    return {};
+    // CatalogItemTurkey,
   },
   computed: {
-    ...mapGetters(["PRODUCTS", "CART"]),
+    ...mapGetters(["CART"]),
   },
   methods: {
-    ...mapActions(["GET_PRODUCTS_FROM_API", "ADD_TO_CART"]),
+    ...mapActions(["ADD_TO_CART"]),
     addToCart(data) {
       this.ADD_TO_CART(data);
     },
   },
-  mounted() {
-    this.GET_PRODUCTS_FROM_API().then((response) => {
-      if (response.data) {
-        console.log("Data arrived!");
-      }
-    });
-  },
+  mounted() {}
 };
 </script>
 

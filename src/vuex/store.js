@@ -17,7 +17,6 @@ let store = new Vuex.Store({
     products: [],
     cart: [],
     error: null,
-    test: [],
   },
   plugins: [createPersistedState()],
   mutations: {
@@ -28,16 +27,13 @@ let store = new Vuex.Store({
     CLEAR_ERROR(state) {
       state.error = null;
     },
-    SET_TEST: (state, test) => {
-      state.test = test;
-    },
     SET_PRODUCTS_TO_STATE: (state, products) => {
       state.products = products;
     },
     SET_CART: (state, product) => {
       let isProductExists = false;
       state.cart.map(function(item) {
-        if (item.article === product.article) {
+        if (item.article === product.id) {
           isProductExists = true;
           item.quantity++;
         }
@@ -58,41 +54,8 @@ let store = new Vuex.Store({
   },
   actions: {
     GET_PRODUCTS_FROM_FB: firestoreAction(({ bindFirestoreRef }) => {
-      return bindFirestoreRef('test', firebase.firestore().collection("products"))
+      return bindFirestoreRef('products', firebase.firestore().collection("products"))
     }),
-    // GET_PRODUCTS_FROM_FB({ commit }) {
-    //   try {
-    //     const test = firebase
-    //       .firestore()
-    //       .collection("products")
-    //       .get()
-    //       .then((ctx) => {
-    //         ctx.forEach((doc) => {
-    //           doc.data()
-    //         });
-    //       });
-    //       commit("SET_TEST", test)
-    //       console.log(test, 123);
-    //   } catch (e) {
-    //     console.log(e);
-    //   }
-    // },
-    // GET_PRODUCTS_FROM_API({ commit }) {
-    //   return axios(
-    //     "https://my-json-server.typicode.com/exsem/online-store/products",
-    //     {
-    //       method: "GET",
-    //     }
-    //   )
-    //     .then((products) => {
-    //       commit("SET_PRODUCTS_TO_STATE", products.data);
-    //       return products;
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //       return error;
-    //     });
-    // },
     ADD_TO_CART({ commit }, product) {
       commit("SET_CART", product);
     },

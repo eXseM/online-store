@@ -21,8 +21,8 @@ export default {
   },
   data() {
     return {
-      products: []
-    }
+      products: [],
+    };
   },
   computed: {
     ...mapGetters(["CART"]),
@@ -33,20 +33,8 @@ export default {
       this.ADD_TO_CART(data);
     },
   },
-  created () {
-    this.products = this.$store.state.test[1].Turkey
-  },
-  mounted() {
-    this.GET_PRODUCTS_FROM_FB().then((response) => {
-      if (response) {
-        console.log('Data');
-      }
-    })
-    // this.GET_PRODUCTS_FROM_API().then((response) => {
-    //   if (response.data) {
-    //     console.log("Data arrived!");
-    //   }
-    // });
+  created() {
+    this.products = this.$store.state.products[1].Turkey
   },
 };
 </script>

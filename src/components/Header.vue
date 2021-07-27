@@ -59,6 +59,7 @@ export default {
     ...mapGetters(["CART"]),
   },
   mounted() {
+    // window.localStorage.clear()
     let vm = this;
     document.addEventListener("click", function(item) {
       if (item.target === vm.$refs["dropMenu-close"]) {

@@ -12,6 +12,9 @@
           @decrement="decrement(index)"
         />
       </div>
+      <div class="cart__price">
+        <p class="count">Сумма заказа: {{cartTotalCost}} ₽</p> 
+      </div>
     </div>
 </template>
 
@@ -59,10 +62,10 @@ import {mapActions} from "vuex"
 .cart{
   color: #000;
   display: flex;
-  min-height: 100vh;
+  min-height: 90vh;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
   .title {
     width: 75%;
     text-align: left;
@@ -73,8 +76,18 @@ import {mapActions} from "vuex"
   .cart-item {
     width: 80%;
     display: flex;
+    justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
+  }
+  &__price{ 
+    width: 100%;
+    margin-top: 200px;
+    background: #ff6c6c50;
+    .count{
+      font-size: 20px;
+      color: #000;
+    }
   }
   &__empty{
     color: #000;

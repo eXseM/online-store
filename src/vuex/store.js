@@ -33,7 +33,7 @@ let store = new Vuex.Store({
     SET_CART: (state, product) => {
       let isProductExists = false;
       state.cart.map(function(item) {
-        if (item.article === product.id) {
+        if (item.id === product.id) {
           isProductExists = true;
           item.quantity++;
         }

@@ -48,6 +48,7 @@ export default {
       this.openMenu = false;
     },
     logout () {
+      window.localStorage.clear()
       this.$store.dispatch('logout')
       this.$router.push('/')
     }

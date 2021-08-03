@@ -1,6 +1,5 @@
 import Vue from "vue";
 import Vuex from "vuex";
-// import axios from "axios";
 import firebase from "firebase/app";
 import "firebase/firestore";
 
@@ -53,8 +52,8 @@ let store = new Vuex.Store({
     },
   },
   actions: {
-    GET_PRODUCTS_FROM_FB: firestoreAction(({ bindFirestoreRef }) => {
-      return bindFirestoreRef('products', firebase.firestore().collection("products"))
+    GET_TURKEY_FROM_FB: firestoreAction(({ bindFirestoreRef }) => {
+      return bindFirestoreRef('products', firebase.firestore().collection("Turkey"))
     }),
     ADD_TO_CART({ commit }, product) {
       commit("SET_CART", product);

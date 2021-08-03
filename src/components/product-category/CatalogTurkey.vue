@@ -28,13 +28,15 @@ export default {
     ...mapGetters(["CART"]),
   },
   methods: {
-    ...mapActions(["ADD_TO_CART", "GET_PRODUCTS_FROM_FB"]),
+    ...mapActions(["ADD_TO_CART", "GET_TURKEY_FROM_FB"]),
     addToCart(data) {
       this.ADD_TO_CART(data);
     },
   },
   created() {
-    this.products = this.$store.state.products[1].Turkey
+    this.$store.state.products.forEach((item) => {
+      this.products.push(item.fields)
+    })
   },
 };
 </script>

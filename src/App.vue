@@ -23,7 +23,7 @@ export default {
   },
   async created(){
     await this.$store.dispatch("FETCH_INFO");
-    await this.$store.dispatch('GET_PRODUCTS_FROM_FB')
+    await this.$store.dispatch('GET_TURKEY_FROM_FB')
     // firebase.firestore().collection("products").get().then((querySnapshot) => {
     //   querySnapshot.forEach((doc) => {
     //     console.log(doc.data());

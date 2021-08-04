@@ -33,15 +33,15 @@ export default {
           .add(
             {
               fields: {
-                id: this.fields.id,
+                id: +this.fields.id,
                 image: this.fields.image,
                 name: this.fields.name,
-                price: this.fields.price,
+                price: +this.fields.price,
               },
             }
           );
-        this.fields.id = null
-        this.fields.image = "1.jpg"
+        this.fields.id = this.fields.id++
+        this.fields.image = "1.png"
         this.fields.name = ""
         this.fields.price = null
         console.log("Complete");

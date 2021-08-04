@@ -4,7 +4,8 @@
       <img :src="require('@/assets/' + product_data.image)" alt="" />
     </div>
     <div class="catalog-item__box">
-      <p class="catalog-item__name">{{ product_data.name }}</p>
+      
+      <p class="catalog-item__name">{{ product_data.name }} || {{ product_data.id }}</p>
       <!-- <p class="catalog-item__weight">{{ product_data.weight }} гр.</p> -->
       <p class="catalog-item__price">{{ product_data.price }} Р</p>
       <button class="catalog-item__addToCart btn" @click="addToCart">

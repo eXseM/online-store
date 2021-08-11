@@ -1,6 +1,6 @@
 <template>
   <div class="catalog-semi">
-    <h2 class="title">Полуфабрикат</h2>
+    <h2 class="title">Колбасы</h2>
     <div class="pol">
       <CatalogItemSemi
         v-for="product in products"
@@ -34,7 +34,7 @@ export default {
     },
   },
   mounted() {
-    this.$store.state.semi.forEach((item) => {
+    this.$store.state.saus.forEach((item) => {
       this.products.push(item.fields);
     });
   },

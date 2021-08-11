@@ -14,7 +14,7 @@
 
 <script>
 import CatalogItemTurkey from "@/components/product-items/CatalogItemTurkey";
-import { mapActions, mapGetters } from "vuex";
+import { mapActions } from "vuex";
 export default {
   components: {
     CatalogItemTurkey,
@@ -24,16 +24,13 @@ export default {
       products: [],
     };
   },
-  computed: {
-    ...mapGetters(["CART"]),
-  },
   methods: {
-    ...mapActions(["ADD_TO_CART", "GET_TURKEY_FROM_FB"]),
+    ...mapActions(["ADD_TO_CART"]),
     addToCart(data) {
       this.ADD_TO_CART(data);
     },
   },
-  created() {
+  mounted() {
     this.$store.state.products.forEach((item) => {
       this.products.push(item.fields)
     })

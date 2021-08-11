@@ -3,20 +3,26 @@
     <div class="catalog__list">
       <CatalogTurkey />
       <CatalogSemi />
+      <CatalogDuck />
+      <CatalogSaus />
     </div>
   </div>
 </template>
 
 <script>
-import CatalogTurkey from "@/components/product-category/CatalogTurkey"
-import CatalogSemi from "@/components/product-category/CatalogSemi"
+import CatalogTurkey from "@/components/product-category/CatalogTurkey";
+import CatalogSemi from "@/components/product-category/CatalogSemi";
+import CatalogDuck from "@/components/product-category/CatalogDuck";
+import CatalogSaus from "@/components/product-category/CatalogSaus";
 export default {
   name: "Catalog",
   components: {
     CatalogTurkey,
-    CatalogSemi
-  }
-}
+    CatalogSemi,
+    CatalogDuck,
+    CatalogSaus,
+  },
+};
 </script>
 
 <style lang="scss" scoped>

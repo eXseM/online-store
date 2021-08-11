@@ -29,7 +29,7 @@ export default {
       try {
         await firebase
           .firestore()
-          .collection("Turkey")
+          .collection("Sausages")
           .add(
             {
               fields: {

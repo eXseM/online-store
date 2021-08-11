@@ -4,7 +4,6 @@
       <img :src="require('@/assets/' + product_data.image)" alt="" />
     </div>
     <div class="catalog-item__box">
-      
       <p class="catalog-item__name">{{ product_data.name }}</p>
       <!-- <p class="catalog-item__weight">{{ product_data.weight }} гр.</p> -->
       <p class="catalog-item__price">{{ product_data.price }} ₽ за 1 кг.</p>
@@ -64,13 +63,13 @@ export default {
     padding-left: 20px;
   }
   &__name {
-    color: #333;
+    color: #fff;
   }
   &__weight {
-    color: #333;
+    color: #fff;
   }
   &__price {
-    color: #333;
+    color: #fff;
   }
 
   &__addToCart {
@@ -78,17 +77,17 @@ export default {
     margin-left: 170px;
     width: 80px;
     height: 35px;
-    color: #333;
+    color: #fff;
     font-size: 14px;
-    background: #fff;
-    border: 1px solid #333;
+    background: none;
+    border: 1px solid #fff;
     border-radius: 2px;
 
     &:hover {
-        background: #FF6C6C;
-        color: #fff;
-        border: none;
-        border-radius: 2px;
+      background: #ff6c6c;
+      color: #fff;
+      border: none;
+      border-radius: 2px;
     }
   }
 }

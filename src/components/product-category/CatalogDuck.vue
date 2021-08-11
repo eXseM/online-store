@@ -1,8 +1,8 @@
 <template>
-  <div class="catalog-semi">
-    <h2 class="title">Полуфабрикат</h2>
-    <div class="pol">
-      <CatalogItemSemi
+  <div class="catalog-turkey">
+    <h2 class="title">Утки</h2>
+    <div class="ind">
+      <CatalogItemDuck
         v-for="product in products"
         :key="product.id"
         @addToCart="addToCart"
@@ -13,19 +13,16 @@
 </template>
 
 <script>
-import CatalogItemSemi from "@/components/product-items/CatalogItemSemi";
-import { mapActions, mapGetters } from "vuex";
+import CatalogItemDuck from "@/components/product-items/CatalogItemDuck";
+import { mapActions } from "vuex";
 export default {
   components: {
-    CatalogItemSemi,
+    CatalogItemDuck,
   },
   data() {
     return {
       products: [],
     };
-  },
-  computed: {
-    ...mapGetters(["CART"]),
   },
   methods: {
     ...mapActions(["ADD_TO_CART"]),
@@ -34,15 +31,15 @@ export default {
     },
   },
   mounted() {
-    this.$store.state.semi.forEach((item) => {
-      this.products.push(item.fields);
-    });
+    this.$store.state.duck.forEach((item) => {
+      this.products.push(item.fields)
+    })
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.catalog-semi {
+.catalog-turkey {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -50,15 +47,15 @@ export default {
   align-items: center;
   width: 100%;
   height: 100%;
-  background: #1c1a22;
   .title {
     width: 75%;
     text-align: left;
-    color: #fff;
+    color: #000;
     font-weight: 500;
     font-size: 30px;
+    flex-wrap: nowrap;
   }
-  .pol {
+  .ind {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

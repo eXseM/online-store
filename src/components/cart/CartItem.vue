@@ -65,6 +65,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   margin-top: 20px;
   &__img{
     height: 300px;

@@ -11,6 +11,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 import "firebase/database";
+import { firebase_cfg } from "./firebaseconfig";
 
 Vue.config.productionTip = false;
 
@@ -19,17 +20,7 @@ Vue.use(Vuelidate);
 Vue.component("MaskedInput", MaskedInput);
 Vue.use(Notifications);
 
-firebase.initializeApp({
-  apiKey: "AIzaSyDN66-WO-JzTsdZahDqFVqTtrDf_obcWpE",
-  authDomain: "online-store-meat.firebaseapp.com",
-  databaseURL:
-    "https://online-store-meat-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "online-store-meat",
-  storageBucket: "online-store-meat.appspot.com",
-  messagingSenderId: "569347661367",
-  appId: "1:569347661367:web:a1f04e4eb5114e4e85a9b2",
-  measurementId: "G-H7H2KEC7NS",
-});
+firebase.initializeApp(firebase_cfg);
 
 Vue.directive("click-outside", {
   bind: function(el, binding, vnode) {

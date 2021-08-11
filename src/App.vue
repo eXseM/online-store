@@ -24,11 +24,9 @@ export default {
   async created(){
     await this.$store.dispatch("FETCH_INFO");
     await this.$store.dispatch('GET_TURKEY_FROM_FB')
-    // firebase.firestore().collection("products").get().then((querySnapshot) => {
-    //   querySnapshot.forEach((doc) => {
-    //     console.log(doc.data());
-    //   })
-    // })
+    await this.$store.dispatch('GET_SEMI_FROM_FB')
+    await this.$store.dispatch('GET_DUCK_FROM_FB')
+    await this.$store.dispatch('GET_SAUS_FROM_FB')
   },
   methods: {
     open() {

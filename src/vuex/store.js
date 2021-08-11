@@ -14,6 +14,9 @@ Vue.use(Vuex);
 let store = new Vuex.Store({
   state: {
     products: [],
+    semi: [],
+    duck: [],
+    saus: [],
     cart: [],
     error: null,
   },
@@ -28,6 +31,12 @@ let store = new Vuex.Store({
     },
     SET_PRODUCTS_TO_STATE: (state, products) => {
       state.products = products;
+    },
+    SET_SEMI_TO_STATE: (state, semi) => {
+      state.semi = semi;
+    },
+    SET_DUCK_TO_STATE: (state, duck) => {
+      state.duck = duck;
     },
     SET_CART: (state, product) => {
       let isProductExists = false;
@@ -53,7 +62,25 @@ let store = new Vuex.Store({
   },
   actions: {
     GET_TURKEY_FROM_FB: firestoreAction(({ bindFirestoreRef }) => {
-      return bindFirestoreRef('products', firebase.firestore().collection("Turkey"))
+      return bindFirestoreRef(
+        "products",
+        firebase.firestore().collection("Turkey")
+      );
+    }),
+    GET_SEMI_FROM_FB: firestoreAction(({ bindFirestoreRef }) => {
+      return bindFirestoreRef(
+        "semi",
+        firebase.firestore().collection("Semifinished")
+      );
+    }),
+    GET_DUCK_FROM_FB: firestoreAction(({ bindFirestoreRef }) => {
+      return bindFirestoreRef("duck", firebase.firestore().collection("Duck"));
+    }),
+    GET_SAUS_FROM_FB: firestoreAction(({ bindFirestoreRef }) => {
+      return bindFirestoreRef(
+        "saus",
+        firebase.firestore().collection("Sausages")
+      );
     }),
     ADD_TO_CART({ commit }, product) {
       commit("SET_CART", product);

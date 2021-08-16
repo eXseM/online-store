@@ -24,7 +24,7 @@
           </button>
           <transition name="fade">
             <div class="drop-menu" v-if="openMenu">
-              <router-link to="/"><button class="drop-menu__action btn">Личный кабинет</button></router-link>
+              <router-link to="/profile"><button class="drop-menu__action btn">Личный кабинет</button></router-link>
               <button class="drop-menu__action btn" @click='logout'>Выйти</button>
             </div>
           </transition>

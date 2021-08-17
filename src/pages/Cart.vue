@@ -16,6 +16,7 @@
     </div>
     <div class="cart__price">
       <p class="count">Сумма заказа: {{ cartTotalCost }} ₽</p>
+      <button class="checkout_btn">Перейти к оплате</button>
     </div>
   </div>
 </template>
@@ -87,6 +88,20 @@ export default {
     .count {
       font-size: 20px;
       color: #000;
+    }
+    .checkout_btn{
+      width: 200px;
+      height: 40px;
+      color: #000;
+      border: none;
+      background: none;
+      border-radius: 4px;
+      font-size: 20px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      &:hover{ 
+        border: 2px solid #000;
+      }
     }
   }
   &__empty {

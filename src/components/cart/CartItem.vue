@@ -4,6 +4,8 @@
       :src="require('@/assets/' + cart_item_data.image)"
       alt=""
       class="cart-items__img"
+      width="250"
+      height="250"
     />
     <div class="cart-items__info">
       <div class="cart-items__info__title">
@@ -60,7 +62,7 @@ export default {
 <style lang="scss" scoped>
 .cart-items {
   color: #000;
-  width: 260px;
+  width: 300px;
   margin-left: 20px;
   display: flex;
   flex-direction: column;
@@ -68,14 +70,12 @@ export default {
   justify-content: space-between;
   margin-top: 20px;
   &__img{
-    height: 300px;
-    margin-top: -30px;
+    height: 250px;
   }
   &__info {
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-top: -20px;
 
     &__actions {
       margin-top: 20px;

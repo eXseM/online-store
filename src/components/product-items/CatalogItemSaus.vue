@@ -1,7 +1,7 @@
 <template>
   <div class="catalog-item">
     <div class="catalog-item__img">
-      <img :src="require('@/assets/' + product_data.image)" alt="" />
+      <img :src="require('@/assets/' + product_data.image)" alt="" width="250" height="250"/>
     </div>
     <div class="catalog-item__box">
       <p class="catalog-item__name">{{ product_data.name }}</p>

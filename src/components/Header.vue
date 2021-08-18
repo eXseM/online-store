@@ -1,9 +1,9 @@
 <template>
   <div class="header">
-    <div class="header__left">
+    <div class="header__left" v-if="!mobileView">
       LOGO
     </div>
-    <div class="header__right">
+    <div class="header__right" v-if="!mobileView">
       <div class="header__right__links">
         <router-link class="links" to="/"> Каталог </router-link>
         <router-link class="links" to="/contacts"> Контакты </router-link>
@@ -18,44 +18,63 @@
           Корзина {{ CART.length }}
         </router-link>
         <div class="user-menu" v-click-outside="close">
-          <div class="user-avatar" v-if="name"><img src="@/assets/user.png" alt="" class="user-avatar__img"></div>
+          <div class="user-avatar" v-if="name">
+            <img src="@/assets/user.png" alt="" class="user-avatar__img" />
+          </div>
           <button class="user-name" @click="openMenu = !openMenu">
-            {{name}}
+            {{ name }}
           </button>
           <transition name="fade">
             <div class="drop-menu" v-if="openMenu">
-              <router-link to="/profile"><button class="drop-menu__action btn">Личный кабинет</button></router-link>
-              <button class="drop-menu__action btn" @click='logout'>Выйти</button>
+              <router-link to="/profile">
+                <button class="drop-menu__action btn">
+                    Личный кабинет
+                </button>
+              </router-link >
+              <button class="drop-menu__action btn" @click="logout">
+                Выйти
+              </button>
             </div>
           </transition>
         </div>
       </div>
     </div>
+    <mobile-nav
+      :auth="name"
+      @open-modal="$emit('open-modal')"
+      v-else
+    />
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
+import MobileNav from "./modules/MobileNav.vue";
 export default {
+  components: { MobileNav },
   name: "Header",
   data() {
     return {
       openMenu: false,
+      mobileView: false,
     };
   },
   methods: {
-    close () {
+    close() {
       this.openMenu = false;
     },
-    logout () {
-      window.localStorage.clear()
-      this.$store.dispatch('logout')
-      this.$router.push('/')
-    }
+    logout() {
+      window.localStorage.clear();
+      this.$store.dispatch("logout");
+      this.$router.push("/");
+    },
+    handleView() {
+      this.mobileView = window.innerWidth <= 1199;
+    },
   },
   computed: {
-    name(){
-      return this.$store.getters.INFO?.name
+    name() {
+      return this.$store.getters.INFO?.name;
     },
     ...mapGetters(["CART"]),
   },
@@ -66,6 +85,10 @@ export default {
         vm.close();
       }
     });
+  },
+  created() {
+    this.handleView();
+    window.addEventListener("resize", this.handleView);
   },
 };
 </script>

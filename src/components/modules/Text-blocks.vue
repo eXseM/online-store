@@ -12,9 +12,6 @@ import textBlocks from '@/components/text-configs/text-config'
 export default {
   textBlocks,
   name: 'Text-blocks',
-  created () {
-    console.log(this.$options.textBlocks.map(item => item.title))
-  }
 };
 </script>
 

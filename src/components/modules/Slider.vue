@@ -1,13 +1,13 @@
 <template>
   <splide :options="options">
     <splide-slide>
-      <img src="@/assets/1.png" />
+      <img src="@/assets/MyasnoyOreh.png" width="400" />
     </splide-slide>
     <splide-slide>
-      <img src="@/assets/1.png" />
+      <img src="@/assets/PelmeniIzIndeyki.png" width="400" />
     </splide-slide>
     <splide-slide>
-      <img src="@/assets/1.png" />
+      <img src="@/assets/PerecFarsh.png" width="400" />
     </splide-slide>
   </splide>
 </template>

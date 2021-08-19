@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="header__left" v-if="!mobileView">
-      LOGO
+      <img src="@/assets/LOGO.png" alt="" class="logo">
     </div>
     <div class="header__right" v-if="!mobileView">
       <div class="header__right__links">
@@ -104,6 +104,9 @@ export default {
   font-family: Montserrat;
   &__left {
     width: 40%;
+    .logo{
+      height: 60px;
+    }
   }
   &__right {
     width: 60%;

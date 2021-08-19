@@ -3,7 +3,6 @@ import createPersistedState from "vuex-persistedstate";
 export default {
   plugins: [createPersistedState()],
   actions: {
-    // eslint-disable-next-line no-unused-vars
     async login({ commit }, { email, password }) {
       try {
         await firebase.auth().signInWithEmailAndPassword(email, password);

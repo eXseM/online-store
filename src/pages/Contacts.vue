@@ -54,7 +54,7 @@
             v-model="fields.email"
             placeholder="Ваш e-mail"
           />
-          <button type="submit" class="form__btn"> Отправить </button>
+          <button type="submit" class="form__btn">Отправить</button>
         </form>
       </div>
     </div>
@@ -149,14 +149,14 @@ export default {
         display: flex;
         flex-direction: column;
         align-items: center;
-        &__fields{
+        &__fields {
           margin-top: 30px;
           width: 250px;
           height: 30px;
           border: none;
-          border-bottom: solid 1px #FF6C6C;
+          border-bottom: solid 1px #ff6c6c;
         }
-        &__btn{
+        &__btn {
           margin-top: 30px;
           width: 120px;
           height: 35px;
@@ -164,8 +164,8 @@ export default {
           border: 1px solid black;
           border-radius: 4px;
 
-          &:hover{
-            background: #FF6C6C;
+          &:hover {
+            background: #ff6c6c;
             color: #fff;
             border: none;
           }
@@ -175,6 +175,22 @@ export default {
           font-size: 16px;
           font-weight: 300;
         }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .contacts {
+    &__info {
+      display: flex;
+      flex-direction: column;
+      &__left {
+        width: 100%;
+        padding-left: 10px;
+      }
+      &__right {
+        width: 100%;
+        padding-left: 0;
       }
     }
   }

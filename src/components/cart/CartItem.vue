@@ -108,4 +108,9 @@ export default {
     }
   }
 }
+@media only screen and (max-width: 768px) {
+  .cart-items {
+    margin-left: 0;
+  }
+}
 </style>

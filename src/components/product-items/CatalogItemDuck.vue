@@ -4,7 +4,6 @@
       <img :src="require('@/assets/' + product_data.image)" alt="" width="250" height="250"/>
     </div>
     <div class="catalog-item__box">
-      
       <p class="catalog-item__name">{{ product_data.name }}</p>
       <!-- <p class="catalog-item__weight">{{ product_data.weight }} гр.</p> -->
       <p class="catalog-item__price">{{ product_data.price }} ₽ за 1 кг.</p>

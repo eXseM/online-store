@@ -38,4 +38,11 @@ export default {
     font-size: 30px;
   }
 }
+@media only screen and (max-width: 768px) {
+  .about{
+    &__slider{
+      display: none;
+    }
+  }
+}
 </style>

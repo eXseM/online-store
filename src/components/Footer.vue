@@ -52,4 +52,9 @@ export default {
     text-align: center;
   }
 }
+@media only screen and (max-width: 768px) {
+  .footer{
+    display: none;
+  }
+}
 </style>

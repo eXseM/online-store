@@ -1,7 +1,12 @@
 <template>
   <div class="catalog-item">
     <div class="catalog-item__img">
-      <img :src="require('@/assets/' + product_data.image)" alt="" width="250" height="250"/>
+      <img
+        :src="require('@/assets/' + product_data.image)"
+        alt=""
+        width="250"
+        height="250"
+      />
     </div>
     <div class="catalog-item__box">
       <p class="catalog-item__name">{{ product_data.name }}</p>
@@ -28,6 +33,12 @@ export default {
   methods: {
     addToCart() {
       this.$emit("addToCart", this.product_data);
+      this.$notify({
+        group: "foo",
+        title: "Товар добавлен в корзину",
+        type: "success",
+        duration: 1500,
+      });
     },
   },
 };
@@ -84,10 +95,10 @@ export default {
     border-radius: 2px;
 
     &:hover {
-        background: #FF6C6C;
-        color: #fff;
-        border: none;
-        border-radius: 2px;
+      background: #ff6c6c;
+      color: #fff;
+      border: none;
+      border-radius: 2px;
     }
   }
 }

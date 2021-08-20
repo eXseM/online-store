@@ -16,7 +16,7 @@
     </div>
     <div class="cart__price">
       <p class="count">Сумма заказа: {{ cartTotalCost }} ₽</p>
-      <button class="checkout_btn">Перейти к оплате</button>
+      <button class="checkout_btn" @click="routeToYandex">Перейти к оплате</button>
     </div>
   </div>
 </template>
@@ -44,6 +44,9 @@ export default {
     deleteFromCart(index) {
       this.DELETE_FROM_CART(index);
     },
+    routeToYandex(){
+      window.location.href = 'https://yandex.ru/support/pay/test-account.html'
+    }
   },
   computed: {
     cartTotalCost() {
@@ -61,6 +64,7 @@ export default {
 
 <style lang="scss" scoped>
 .cart {
+  margin-top: 60px;
   color: #000;
   display: flex;
   min-height: 90vh;

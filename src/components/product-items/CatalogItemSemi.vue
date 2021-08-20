@@ -28,6 +28,12 @@ export default {
   methods: {
     addToCart() {
       this.$emit("addToCart", this.product_data);
+      this.$notify({
+        group: "foo",
+        title: "Товар добавлен в корзину",
+        type: "success",
+        duration: 1500
+      })
     },
   },
 };

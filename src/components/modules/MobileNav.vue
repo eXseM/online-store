@@ -27,7 +27,7 @@
       </li>
       <li>
         <router-link class="link" to="/cart">
-          Корзина
+          <img src="@/assets/Cart.png" alt="" width="20" height="15" class="cart-icon"> Корзина {{cartLength}}
         </router-link>
       </li>
       <li v-if="auth">
@@ -52,6 +52,11 @@ export default {
     return {
       showMenu: false,
     };
+  },
+  computed: {
+    cartLength() {
+      return this.$store.state.cart.length
+    }
   },
   methods: {
     close() {

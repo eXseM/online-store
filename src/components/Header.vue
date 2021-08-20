@@ -15,7 +15,7 @@
           class="links"
           :to="{ name: 'Cart', params: { cart_data: CART } }"
         >
-          Корзина {{ CART.length }}
+          <img src="@/assets/Cart.png" alt="" width="20" height="15" class="cart-icon"> Корзина {{ CART.length }}
         </router-link>
         <div class="user-menu" v-click-outside="close">
           <div class="user-avatar" v-if="name">
@@ -95,6 +95,8 @@ export default {
 
 <style lang="scss" scoped>
 .header {
+  position: fixed;
+  top: 0;
   background: #ff6c6c;
   display: flex;
   flex-direction: row;
@@ -102,6 +104,7 @@ export default {
   height: 60px;
   width: 100%;
   font-family: Montserrat;
+  z-index: 232;
   &__left {
     width: 40%;
     .logo{
@@ -126,6 +129,12 @@ export default {
         font-weight: 400;
         padding-left: 10px;
         padding-right: 10px;
+        // .cart-icon{
+        //   position: relative;
+        //   top: 5px;
+        //   right: -10px;
+        //   z-index: -2;
+        // }
       }
       .user-menu {
         width: 130px;

@@ -47,6 +47,7 @@ export default {
   align-items: center;
   width: 100%;
   height: 100%;
+  margin-top: 60px;
   .title {
     width: 75%;
     text-align: left;

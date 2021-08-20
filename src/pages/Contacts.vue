@@ -88,6 +88,7 @@ export default {
   flex-direction: column;
   align-items: center;
   margin-bottom: 30px;
+  margin-top: 60px;
   .title {
     width: 75%;
     text-align: left;

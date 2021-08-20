@@ -29,7 +29,7 @@ export default {
   justify-content: center;
   align-items: center;
   align-content: center;
-
+  margin-top: 60px;
   .title {
     width: 75%;
     text-align: left;

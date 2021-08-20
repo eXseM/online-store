@@ -25,6 +25,7 @@ export default {
 
 <style lang="scss" scoped>
 .profile {
+  margin-top: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
